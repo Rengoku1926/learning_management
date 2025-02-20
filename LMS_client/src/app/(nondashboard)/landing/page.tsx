@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Linden_Hill } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import { useCarousel } from "@/hooks/useCarousel";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetCourseQuery, useGetCoursesQuery } from "@/state/api";
+import { useGetCoursesQuery } from "@/state/api";
 import CourseCardSearch from "@/components/CourseCardSearch";
 import { useRouter } from "next/navigation";
 // import { useUser } from "@clerk/nextjs";
@@ -47,7 +46,7 @@ const LoadingSkeleton = () => {
 const Landing = () => {
   const currentImage = useCarousel({ totalImages: 3 });
   const router = useRouter();
-  const {data: courses, isLoading, isError} = useGetCoursesQuery({})
+  const {data: courses, isLoading} = useGetCoursesQuery({})
   const handleCourseClick = (courseId: string) => {
     router.push(`/search?id=${courseId}`)
   }
